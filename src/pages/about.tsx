@@ -1,6 +1,7 @@
 import * as React from "react"
 import { PageProps } from "gatsby"
 import Layout from "../components/layout"
+import { StaticImage } from "gatsby-plugin-image"
 
 export default function AboutPage(props: PageProps) {
   return (
@@ -10,6 +11,9 @@ export default function AboutPage(props: PageProps) {
         </Layout>
 
         <hr/>
+
+        <StaticImage src="../images/foto1.jpeg" alt="Foto avion Miscrosoft Flight Simulator 2020" />
+
         <h2>Path:</h2>
         <p>{props.path}</p>
 
