@@ -7,12 +7,10 @@ export default function IndexPage(props: PageProps) {
     <main>
         <Layout pageTitle={"Home Page"}>
             <p>I'm making this by following the Gatsby Tutorial.</p>
+            <hr/>
+            <h2>Path:</h2>
+            <p>{props.path}</p>
         </Layout>
-
-        <hr/>
-        <h2>Path:</h2>
-        <p>{props.path}</p>
-      
     </main>
   )
 }

@@ -1,0 +1,62 @@
+warning: LF will be replaced by CRLF in gatsby-config.js.
+The file will have its original line endings in your working directory
+[1mdiff --git a/gatsby-config.js b/gatsby-config.js[m
+[1mindex 4a7d3ea..6e506c1 100644[m
+[1m--- a/gatsby-config.js[m
+[1m+++ b/gatsby-config.js[m
+[36m@@ -6,5 +6,13 @@[m [mmodule.exports = {[m
+   plugins: [[m
+     "gatsby-plugin-image",[m
+     "gatsby-plugin-sharp",[m
+[32m+[m[32m    {[m
+[32m+[m[32m      resolve: 'gatsby-plugin-typescript',[m
+[32m+[m[32m      options: {[m
+[32m+[m[32m        isTSX: true,[m
+[32m+[m[32m        jsxPragma: 'jsx',[m
+[32m+[m[32m        allExtensions: true,[m
+[32m+[m[32m      },[m
+[32m+[m[32m    },[m
+   ],[m
+ };[m
+[1mdiff --git a/src/components/layout.tsx b/src/components/layout.tsx[m
+[1mindex 6cf4acf..d99198e 100644[m
+[1m--- a/src/components/layout.tsx[m
+[1m+++ b/src/components/layout.tsx[m
+[36m@@ -1,13 +1,15 @@[m
+ import * as React from 'react'[m
+ import { Link } from 'gatsby'[m
+[31m-// @ts-ignore[m
+[32m+[m[32m// @ts-expect-error[m
+ import * as styles from './layout.module.css'[m
+[32m+[m[32mimport { StaticImage } from "gatsby-plugin-image"[m
+ [m
+ {/*This could be done as: Layout = (props) => ... then props.pageTitle*/}[m
+ const Layout = ({pageTitle, children}) => ([m
+     <div className={styles.container}>[m
+       <title>{pageTitle}</title>[m
+       <nav>[m
+[32m+[m[32m        <StaticImage width={100} src="../images/icon.png" alt="Gatsby icon" />[m
+         <ul className={styles.navLinks}>[m
+             <li className={styles.navLinkItem}>[m
+               <Link to="/" className={styles.navLinkText}>[m
+[1mdiff --git a/src/pages/about.tsx b/src/pages/about.tsx[m
+[1mindex a1329a3..17e2e23 100644[m
+[1m--- a/src/pages/about.tsx[m
+[1m+++ b/src/pages/about.tsx[m
+[36m@@ -9,15 +9,11 @@[m [mexport default function AboutPage(props: PageProps) {[m
+         <Layout pageTitle={"About Page"}>[m
+             <p>Hi there! I'm the proud creator of this site, which I built with Gatsby.</p>[m
+         </Layout>[m
+[31m-[m
+         <hr/>[m
+[31m-[m
+[31m-        <StaticImage src="../images/foto1.jpeg" alt="Foto avion Miscrosoft Flight Simulator 2020" />[m
+[31m-[m
+[32m+[m[32m        <StaticImage width={1000} src="../images/foto1.jpeg" alt="Microsoft Fligh Simulator 2020 screenshot" />[m
+         <h2>Path:</h2>[m
+         <p>{props.path}</p>[m
+ [m
+[31m-      [m
+     </main>[m
+   )[m
+ }[m
